@@ -92,4 +92,122 @@ for __ in range(int(input())):
         print(add(num1, num2))
     else:
         pass
-####################
+##############################
+## From Home PC codechef.py ##
+##############################
+# Calendar https://www.codechef.com/problems/FLOW015
+import calendar
+days = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
+
+
+def get_day():
+    n = int(input())
+    t = calendar.weekday(n, 1, 1)
+    print(days[t])
+
+
+for __ in range(int(input())):
+    get_day()
+############################################
+# ATM https://www.codechef.com/problems/HS08TEST
+withdraw, balance = input().split()
+withdraw = int(withdraw)
+balance = float(balance)
+print("%.2f" % (balance - withdraw - .50)) if withdraw % 5 == 0 and withdraw <= (balance - .50) else print("%.2f" % balance)
+############################################
+# https://www.codechef.com/problems/HMAPPY2
+from math import gcd
+# for __ in range(int(input())):
+#     n, a, b, k = map(int, input().split())
+#     # n, a, b, k = input().split()
+#     # n = int(n)
+#     # a = int(a)
+#     # b = int(b)
+#     # k = int(k)
+#     succ = 0
+#     for i in range(1, n + 1):
+#         if i % a == 0 and i % b == 0:
+#             continue
+#         elif i % a == 0 or i % b == 0:
+#             succ += 1
+#     if succ >= k:
+#         print("Win")
+#     else:
+#         print("Lose")
+for __ in range(int(input())):
+    n, a, b, k = map(int, input().split())
+    u = (a * b) / gcd(a, b)
+    appy = n//a
+    chef = n//b
+    comn = n//u
+    if (appy + chef) - (2 * comn) >= k:
+        print("Win")
+    else:
+        print("Lose")
+############################################
+# https://www.codechef.com/problems/INTEST
+rep_lines, div = map(int, input().split())
+out = 0
+for __ in range(rep_lines):
+    if int(input()) % div == 0:
+        out += 1
+print(out)
+############################################
+# https://www.codechef.com/DEC19B/problems/PLMU
+### WA
+for __ in range(int(input())):
+    totl_prs = 0
+    two = 0
+    zero = 0
+    n = int(input())
+    lst = list(map(int, input().split()))
+    if n == len(lst):
+        for i in range(len(lst)):
+            if lst[i] == 2:
+                two += 1
+            elif lst[i] == 0:
+                zero += 1
+            else:
+                continue
+        two = two // 2
+        zero = zero // 2
+        totl_prs = two + zero
+    else:
+        continue
+    print(totl_prs)
+############################################
+# https://www.codechef.com/problems/FLOW001
+for __ in range(int(input())):
+    a, b = map(int, input().split())
+    print(a + b)
+############################################
+# https://www.codechef.com/problems/FCTRL2 - Factorial function recursion
+def fact(n):
+    if n == 1:
+        return 1
+    else:
+        return n * fact(n - 1)
+
+
+for __ in range(int(input())):
+    print(fact(int(input())))
+############################################
+# https://www.codechef.com/problems/FLOW006
+from functools import reduce
+for __ in range(int(input())):
+    lst = list(map(int, input()))
+    print(reduce(lambda x, y: x + y, lst))
+############################################
+# https://www.codechef.com/problems/TSORT
+lst = []
+for __ in range(int(input())):
+    lst.append(int(input()))
+lst.sort()
+for i in lst:
+    print(i)
+############################################
+# https://www.codechef.com/problems/FLOW002
+for __ in range(int(input())):
+    a, b = map(int, input().split())
+    print(a % b)
+############################################
