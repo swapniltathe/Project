@@ -211,3 +211,55 @@ for __ in range(int(input())):
     a, b = map(int, input().split())
     print(a % b)
 ############################################
+# https://www.codechef.com/problems/FLOW004
+for __ in range(int(input())):
+    num = input()
+    num1 = int(num[0])
+    num2 = int(num[-1])
+    print(num1 + num2)
+############################################
+# https://www.codechef.com/problems/LUCKFOUR
+for __ in range(int(input())):
+    num = input()
+    count = 0
+    for i in num:
+        if i == "4":
+            count += 1
+        else:
+            continue
+    print(count)
+# OR
+for __ in range(int(input())):
+    num = [int(x) for x in input()]  # Create integer list from input
+    cnt = 0
+    for i in num:
+        if i == 4:
+            cnt += 1
+    print(cnt)
+############################################
+# https://www.codechef.com/problems/FLOW007
+for __ in range(int(input())):
+    num = input()
+    rev_num = ""
+    for i in range(len(num)-1, -1, -1):
+        rev_num += num[i]
+    print(int(rev_num))
+############################################
+# https://www.codechef.com/problems/FSQRT
+from math import sqrt
+for __ in range(int(input())):
+    print(int(sqrt(int(input()))))
+############################################
+# https://www.codechef.com/problems/CIELRCPT
+lst = [2048, 1024, 512, 256, 128, 64, 32, 16, 8, 4, 2, 1]
+for __ in range(int(input())):
+    num = int(input())
+    cnt = 0
+    while num != 0:
+        for j in lst:
+            if num - j >= 0:
+                num -= j
+                cnt += 1
+                break
+    print(cnt)
+############################################

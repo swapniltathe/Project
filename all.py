@@ -1418,7 +1418,7 @@ def cent(x):  # to get first two digits of int = year ie. 1992 = 19
 
 
 date = list(input("Enter Date (format: D-M-YYYY): ").split("-"))
-# date = [3, 7, 1986]
+# date = [3-7-1986]
 days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
 f_day = int(date[0])
 # print("f_day: ", f_day)
