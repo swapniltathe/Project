@@ -1995,6 +1995,10 @@ n = len(string)
 a = list(string)
 permute(a, 0, n-1)
 
+# Reverse string
+a = "0101"
+b = ''.join(reversed(a))
+print(a, b)
 
 
 

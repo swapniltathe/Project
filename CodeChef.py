@@ -175,6 +175,22 @@ for __ in range(int(input())):
     else:
         continue
     print(totl_prs)
+# Correct code:
+try:
+    t = int(input())
+    while t > 0:
+        t -= 1
+        n = int(input())
+        l = [int(i) for i in input().split()]
+        z, tw = 0, 0
+        for i in l:
+            if i == 0:
+                z += 1
+            if i == 2:
+                tw += 1
+        print(((z*(z-1))//2)+((tw*(tw-1))//2))
+except:
+    pass
 ############################################
 # https://www.codechef.com/problems/FLOW001
 for __ in range(int(input())):
@@ -264,44 +280,93 @@ for __ in range(int(input())):
     print(cnt)
 ############################################
 # https://www.codechef.com/DEC19B/problems/BINXOR
-def tostring(lst):
-    return ''.join(lst)
-
-
-def permute(a, l, r):
-    if l == r:
-        b_perm.append(tostring(a))
-        # print(tostring(a))
-    else:
-        for i in range(l, r+1):
-            a[l], a[i] = a[i], a[l]
-            permute(a, l+1, r)
-            a[l], a[i] = a[i], a[l]
-
-
+from itertools import permutations
+# a = [1, 2, 3]
+# prod = permutations(a)
+# print(list(prod))
+#
+# def tostring(lst):
+#     return ''.join(lst)
+#
+#
+# def permute(a, l, r):
+#     if l == r:
+#         b_perm.append(tostring(a))
+#         # print(tostring(a))
+#     else:
+#         for i in range(l, r+1):
+#             a[l], a[i] = a[i], a[l]
+#             permute(a, l+1, r)
+#             a[l], a[i] = a[i], a[l]
 for __ in range(int(input())):
     n = int(input())
-    a = [_ for _ in input()]
-    b = [_ for _ in input()]
-    a_perm = []
-    b_perm = []
+    a = [int(_, 2) for _ in input()]
+    b = [int(_, 2) for _ in input()]
+    a_tup = permutations(a)
+    a_perm = set(int(i, 2) for i in [''.join(map(str, j)) for j in a_tup])
+    # a_perm = set(''.join(map(str, _)) for _ in a_tup)
+    # print(a_perm)
+    b_tup = permutations(b)
+    b_perm = set(int(i, 2) for i in [''.join(map(str, j)) for j in b_tup])
+    # b_perm = set(''.join(map(str, _)) for _ in b_tup)
+    # print(b_perm)
     res = []
-    out = []
+    # out = []
     if n == len(a) and n == len(b):
         # print(a, b)
-        permute(a, 0, n-1)
-        a_perm = b_perm.copy()
-        b_perm.clear()
-        permute(b, 0, n-1)
+        # permute(a, 0, n-1)
+        # a_perm = b_perm.copy()
+        # b_perm.clear()
+        # permute(b, 0, n-1)
         # print(a_perm)
         # print(b_perm)
-        for m in (int(m, 2) for m in a_perm):
-            for j in (int(j, 2) for j in b_perm):
-                res.append(m ^ j)
-        # print(len(res))
-        for k in range(len(res)):
-            if res[k] not in out:
-                # print(res[k])
-                out.append(res[k])
-        print(len(out))
+        for i in a_perm:
+            for j in b_perm:
+                res.append((i ^ j) % 2)
+        print(len(set(res)))
+#
+# lst = [(1, 0), (0, 1)]
+# result = [''.join(map(str, i)) for i in lst]
+# out = [int(i, 2) for i in result]
+# print(out)
+# Modulo 1000000007
+1
+1000
+1000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+0100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+# Correct code
+m = 1000000007
+f = [1]
+p = 1
+for i in range(2, 100000):
+    f.append(p)
+    p = (p*i) % m
+t = int(input())
+for x in range(t):
+    n = int(input())
+    a = input()
+    b = input()
+    s = 0
+    o1 = 0
+    o2 = 0
+    for y in range(n):
+        if a[y] == '1':
+            o1 = o1+1
+        if b[y] == '1':
+            o2 = o2+1
+    st = abs(o1-o2)
+    if o1 < o2:
+        o1 = o2
+    en = min(o1-st, n-o1)*2
+    en = en+st
+    c = 1
+    e = 0
+    for y in range(st, en+1, 2):
+        b1 = int(pow(f[y], m-2, m))
+        b2 = int(pow(f[n-y], m-2, m))
+        #c = (c*(n-y+1))%m
+        #c = (c*b1)%m
+        c = (f[n]*b1*b2) % m
+        s = (s+c) % m
+    print(s)
 ############################################
