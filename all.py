@@ -2000,7 +2000,42 @@ a = "0101"
 b = ''.join(reversed(a))
 print(a, b)
 
+###################################
 
+# os.chmod("/tmp/test/test1", stat.S_IWOTH)
+# current_permissions = stat.S_IMODE(os.stat("/tmp/test/test1").st_mode)
+# print(current_permissions)
+# print(stat.filemode(current_permissions)[-2])
+# if stat.filemode(current_permissions)[-2] == 'w':
+#     print("World Writeable file found!")
+# os.chmod("/tmp/test/test1", current_permissions-2)
+# print(stat.filemode(1023))
+# if os.path.exists("/tmp/test/test1"):
+#     print("File/dir exists!")
+# else:
+#     print("File/dir not found!")
+# out = "Line"
+# with open("/tmp/test/output.csv", "a") as outfile:
+#     outfile.write("First,"+out+"\n")
+# out = "Row"
+# with open("/tmp/test/output.csv", "a") as outfile:
+#     outfile.write("Second,"+out+"\n")
+# outfile = lambda x: out_file.write(x + "\n")
+# try:
+#     out_file = open("/tmp/test/out.txt", "a")
+#     file = "Test file"
+#     print("Hello There" + file)
+#     outfile("Hello There " + file)
+#     outfile(file + " Hi\n")
+#
+# except Exception:
+#     pass
+#
+# finally:
+#     out_file.close()
+# print(stat.filemode(os.stat("/tmp/test/test1").st_mode))
+# print(stat.S_IMODE(os.stat("/tmp/test/test1").st_mode))
+# print(oct(stat.S_IMODE(os.stat("/tmp/test/test1").st_mode))[2:])
 
 
 
