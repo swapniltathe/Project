@@ -16,6 +16,40 @@ def divide(x, y):
     if x < y:
         x, y = y, x
     return x / y
+
+
+def filemod(x):
+    x = str(oct(x)[2:])
+    perm = ['?']
+    all_perm = {0: "---", 1: "--x", 2: "-w-", 3: "-wx", 4: "r--", 6: "r-x", 6: "rw-", 7: "rwx"}
+    if len(x) == 3:
+        for i in x:
+            if int(i) in all_perm.keys():
+                perm += all_perm.get(int(i))
+    else:
+        for i in x[1:]:
+            if int(i) in all_perm.keys():
+                perm += all_perm.get(int(i))
+        if x[0] == '1':
+            perm[9] = 'T' if int(x[3]) % 2 == 0 else 't'
+        if x[0] == '2':
+            perm[6] = 'S' if int(x[2]) % 2 == 0 else 's'
+        if x[0] == '3':
+            perm[9] = 'T' if int(x[3]) % 2 == 0 else 't'
+            perm[6] = 'S' if int(x[2]) % 2 == 0 else 's'
+        if x[0] == '4':
+            perm[3] = 'S' if int(x[1]) % 2 == 0 else 's'
+        if x[0] == '5':
+            perm[3] = 'S' if int(x[1]) % 2 == 0 else 's'
+            perm[9] = 'T' if int(x[3]) % 2 == 0 else 't'
+        if x[0] == '6':
+            perm[3] = 'S' if int(x[1]) % 2 == 0 else 's'
+            perm[6] = 'S' if int(x[2]) % 2 == 0 else 's'
+        if x[0] == '7':
+            perm[3] = 'S' if int(x[1]) % 2 == 0 else 's'
+            perm[6] = 'S' if int(x[2]) % 2 == 0 else 's'
+            perm[9] = 'T' if int(x[3]) % 2 == 0 else 't'
+    return ''.join(perm)
 """
 import os
 
@@ -2036,7 +2070,52 @@ print(a, b)
 # print(stat.filemode(os.stat("/tmp/test/test1").st_mode))
 # print(stat.S_IMODE(os.stat("/tmp/test/test1").st_mode))
 # print(oct(stat.S_IMODE(os.stat("/tmp/test/test1").st_mode))[2:])
+################################################
+# filemod file permissions rwx way in python 2
+import os
+import stat
+# curr_perm = oct(stat.S_IMODE(os.stat("/tmp/test/test3").st_mode))[2:]
+file = "/tmp/test/test3"
+curr_perm = stat.S_IMODE(os.stat(file).st_mode)
+# print(oct(curr_perm)[2:])
 
+
+def filemod(x):
+    x = str(oct(x)[2:])
+    perm = ['?']
+    all_perm = {0: "---", 1: "--x", 2: "-w-", 3: "-wx", 4: "r--", 6: "r-x", 6: "rw-", 7: "rwx"}
+    if len(x) == 3:
+        for i in x:
+            if int(i) in all_perm.keys():
+                perm += all_perm.get(int(i))
+    else:
+        for i in x[1:]:
+            if int(i) in all_perm.keys():
+                perm += all_perm.get(int(i))
+        if x[0] == '1':
+            perm[9] = 'T' if int(x[3]) % 2 == 0 else 't'
+        if x[0] == '2':
+            perm[6] = 'S' if int(x[2]) % 2 == 0 else 's'
+        if x[0] == '3':
+            perm[9] = 'T' if int(x[3]) % 2 == 0 else 't'
+            perm[6] = 'S' if int(x[2]) % 2 == 0 else 's'
+        if x[0] == '4':
+            perm[3] = 'S' if int(x[1]) % 2 == 0 else 's'
+        if x[0] == '5':
+            perm[3] = 'S' if int(x[1]) % 2 == 0 else 's'
+            perm[9] = 'T' if int(x[3]) % 2 == 0 else 't'
+        if x[0] == '6':
+            perm[3] = 'S' if int(x[1]) % 2 == 0 else 's'
+            perm[6] = 'S' if int(x[2]) % 2 == 0 else 's'
+        if x[0] == '7':
+            perm[3] = 'S' if int(x[1]) % 2 == 0 else 's'
+            perm[6] = 'S' if int(x[2]) % 2 == 0 else 's'
+            perm[9] = 'T' if int(x[3]) % 2 == 0 else 't'
+    return ''.join(perm)
+
+
+print(filemod(curr_perm))
+##########################################
 
 
 

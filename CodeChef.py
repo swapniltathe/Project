@@ -169,8 +169,8 @@ for __ in range(int(input())):
                 zero += 1
             else:
                 continue
-        two = two // 2
-        zero = zero // 2
+        two = (two * (two-1)) // 2
+        zero = (zero * (zero-1)) // 2
         totl_prs = two + zero
     else:
         continue
