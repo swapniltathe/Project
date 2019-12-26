@@ -1,38 +1,22 @@
-for __ in range(int(input())):
-    n = int(input())
-    lst = list(int(_) for _ in input().split())
-    nlst = [lst[0]]
-    out = []
-    for i in range(len(lst)-1):
-        if lst[i] == lst[i+1]-1:
-            nlst.append(lst[i+1])
-        else:
-            if nlst:
-                if len(nlst) > 2:
-                    out.extend((nlst[0], "...", nlst[-1]))
-                else:
-                    out.extend((nlst[0], nlst[1]))
-            nlst.clear()
-            out.append(lst[i+1])
-    if nlst:
-        if len(nlst) > 2:
-            out.extend((nlst[0], "...", nlst[-1]))
-        else:
-            out.extend(nlst)
-    else:
-        out.append(lst[i])
-    print(''.join(out))
+try:
+    ic = [(0, 1), (1, 2), (3, 4), (4, 5), (6, 7), (7, 8), (0, 3), (3, 6), (1, 4), (4, 7), (2, 5), (5, 8)]
+    board = [(1, 2, 3, 4, 5, 6, 7, 8, 9)]
+    boardfq = {(1, 2, 3, 4, 5, 6, 7, 8, 9): 0}
 
-# 1 2 3 4 5
-#
-# loop 1 to 5
-# check 1 = (2-1)
-#     True: nlst = 1, 2
-#     false:
-#         if nlst has value:
-#             if nlist values greater than 2:
-#                   str += nlst[0],"...", nlst[-1]
-#             else
-#                   str += nlist[0], nlist[1]
-#         nlst = blank
-#         str += 1,
+    for state in board:
+        for present in [(a, b) for a, b in ic if (state[a] + state[b]) in [2, 3, 5, 7, 11, 13, 17]]:
+            new_ic = list(state[:])
+            new_ic[present[0]], new_ic[present[1]] = new_ic[present[1]], new_ic[present[0]]
+            new_ic = tuple(new_ic)
+            if new_ic not in boardfq:
+                boardfq[new_ic] = boardfq[state] + 1
+                board.append(new_ic)
+
+    for _ in range(int(input())):
+        i = tuple([int(x) for x in ' '.join([input().strip() for _ in range(4)]).split(' ') if x != ''])
+        if i in boardfq:
+            print(boardfq[i])
+        else:
+            print(-1)
+except:
+    pass

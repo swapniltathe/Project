@@ -2116,6 +2116,16 @@ def filemod(x):
 
 print(filemod(curr_perm))
 ##########################################
+# Asterisks in python
+intlst = [1, 2, 3, 4, 5]
+strlst = ['a', 'b', 'c', 'd', 'e']
+mixlst = [1, 2, 3, 'a', 'b', 'c']
+print(*intlst)
+print(*strlst)
+print(*mixlst)
+tup = (1, 2, 3, 'a', 'b', 'c')
+print(*tup, sep=", ")
+##########################################
 
 
 

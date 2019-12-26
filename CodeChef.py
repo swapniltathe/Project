@@ -370,3 +370,120 @@ for x in range(t):
         s = (s+c) % m
     print(s)
 ############################################
+# https://www.codechef.com/problems/CMPRSS
+try:
+    for _ in range(int(input())):
+        n = int(input())
+        lst = list(map(int, input().split()))
+        lst.append(0)
+        c = 0
+        for i in range(n):
+            if lst[i+1] - lst[i] == 1:
+                c += 1
+            else:
+                if i != n-1:
+                    if c >= 2:
+                        print("{}...{},".format(lst[i-c], lst[i]), end='')
+                        c = 0
+                    elif c == 1:
+                        print("{},{},".format(lst[i-c], lst[i]), end='')
+                        c = 0
+                    else:
+                        print("{},".format(lst[i]), end='')
+                        c = 0
+                else:
+                    if c >= 2:
+                        print("{}...{}".format(lst[i-c], lst[i]))
+                        c = 0
+                    elif c == 1:
+                        print("{},{}".format(lst[i-c], lst[i]))
+                        c = 0
+                    else:
+                        print("{}".format(lst[i]))
+                        c = 0
+except:
+    pass
+############################################
+# https://www.codechef.com/problems/MXCH
+for _ in range(int(input())):
+    n, k = map(int, input().split())
+    for i in range(k):
+        print(i+1, end=" ")
+    for j in range(n, k, -1):
+        print(j, end=" ")
+############################################
+# https://www.codechef.com/problems/SC31
+def xor(s1, s2):
+    y = ''.join('0' if i == j else '1' for i, j in zip(s1, s2))
+    return y
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    weapons = []
+    for _ in range(n):
+        weapons.append(input())
+    res = weapons[0]
+    for i in weapons[1:]:
+        res = xor(res, i)
+    count = 0
+    for i in res:
+        if i == '1':
+            count += 1
+    print(count)
+############################################
+# https://www.codechef.com/problems/SC31
+def xor(x, y):
+    z = ''.join('0' if k == l else '1' for k, l in zip(x, y))
+    # z = ''
+    # for k, l in zip(x, y):
+    #     if k == l:
+    #         z += '0'
+    #     else:
+    #         z += '1'
+    return z
+
+
+for _ in range(int(input())):
+    lst = []
+    for i in range(int(input())):
+        lst.append(input())
+    res = lst[0]
+    for j in lst[1:]:
+        res = xor(res, j)
+    print(res.count('1'))
+############################################
+# https://www.codechef.com/problems/HRDSEQ
+for _ in range(int(input())):
+    n = int(input())
+    lst = [0]
+    e = 0
+    for i in range(n-1):
+        s = i
+        for j in range(i-1, -1, -1):
+            if lst[i] == lst[j]:
+                e = j
+                break
+            else:
+                e = i
+        lst.append(s-e)
+    print(lst.count(lst[n-1]))
+############################################
+# https://www.codechef.com/problems/CHNGIT
+from functools import reduce
+from collections import Counter
+for _ in range(int(input())):
+    n = int(input())
+    lst = list(map(int, input().split()))
+    # lst.sort()
+    dic = Counter(lst)
+    # dic = {}
+    # for i in range(n):
+    #     dic[lst[i]] = lst.count(lst[i])
+    if len(dic.values()) != 1:
+        val = list(dic.values())
+        val.sort(reverse=True)
+        print(n - val[0])
+        # print(reduce(lambda x, y: x+y, val[1:]))
+    else:
+        print(0)
+############################################
