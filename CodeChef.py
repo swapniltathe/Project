@@ -487,3 +487,43 @@ for _ in range(int(input())):
     else:
         print(0)
 ############################################
+# https://www.codechef.com/COOK113B/problems/PRFYIT
+for _ in range(int(input())):
+    s=input()
+    n=len(s)
+    #3 parts  0 1 0  or 1 0 1
+    pre1=[0]*(n+1)
+    maxi=0
+    pre0=[0]*(n+1)
+    for i in range(1,n+1):
+        pre1[i]=pre1[i-1]+(s[i-1]=='1')
+        pre0[i]=pre0[i-1]+(s[i-1]=='0')
+    for i in range(n):
+        for j in range(i,n):
+            #010
+            case1 =pre0[i]+pre1[j+1]-pre1[i]+pre0[n]-pre0[j]
+            #101
+            case2 =pre1[i]+pre0[j+1]-pre0[i]+pre1[n]-pre1[j]
+            maxi=max(maxi,case1,case2)
+    print(n-maxi)
+# my version (used PyPy3 to submit)
+for _ in range(int(input())):
+    S = input()
+    n = len(S)
+    cnt0 = [0] * (n+1)
+    cnt1 = [0] * (n+1)
+    for i in range(1, n+1):
+        if S[i-1] == '0':
+            cnt0[i] = cnt0[i-1] + 1
+            cnt1[i] = cnt1[i-1]
+        else:
+            cnt1[i] = cnt1[i-1] + 1
+            cnt0[i] = cnt0[i-1]
+    mx = 0
+    for j in range(n):
+        for k in range(j, n):
+            olo = cnt0[j] + cnt1[k+1] - cnt1[j] + cnt0[n] - cnt0[k]
+            lol = cnt1[j] + cnt0[k+1] - cnt0[j] + cnt1[n] - cnt1[k]
+            mx = max(mx, olo, lol)
+    print(n-mx)
+############################################
