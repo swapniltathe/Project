@@ -527,3 +527,109 @@ for _ in range(int(input())):
             mx = max(mx, olo, lol)
     print(n-mx)
 ############################################
+# https://www.codechef.com/JAN20B/problems/BRKBKS
+for _ in range(int(input())):
+    s, w1, w2, w3 = map(int, input().split())
+    if 1 <= w1 <= 2 and 1 <= w2 <= 2 and 1 <= w3 <= 2 and 1 <= s <= 8:
+        # non-reverse
+        h1 = 0
+        o = 0
+        if s == w1:
+            h1 += 1
+        else:
+            o = s - w1
+
+        if o != 0:
+            if o - w2 == 0:
+                h1 += 1
+                o = 0
+            elif o - w2 < 0:
+                h1 += 1
+                if s == w2:
+                    h1 += 1
+                    o = 0
+                else:
+                    o = s - w2
+            else:
+                o -= w2
+        else:
+            if s == w2:
+                h1 += 1
+            else:
+                o = s - w2
+
+        if o != 0:
+            if o - w3 == 0:
+                h1 += 1
+            elif o - w3 < 0:
+                h1 += 2
+            else:
+                h1 += 1
+        else:
+            h1 += 1
+
+        # reverse
+        h2 = 0
+        o = 0
+        if s == w3:
+            h2 += 1
+        else:
+            o = s - w3
+
+        if o != 0:
+            if o - w2 == 0:
+                h2 += 1
+                o = 0
+            elif o - w2 < 0:
+                h2 += 1
+                if s == w2:
+                    h2 += 1
+                    o = 0
+                else:
+                    o = s - w2
+            else:
+                o -= w2
+        else:
+            if s == w2:
+                h2 += 1
+            else:
+                o = s - w2
+
+        if o != 0:
+            if o - w1 == 0:
+                h2 += 1
+            elif o - w1 < 0:
+                h2 += 2
+            else:
+                h2 += 1
+        else:
+            h2 += 1
+
+        print(min(h1, h2))
+############################################
+# https://www.codechef.com/JAN20B/problems/DYNAMO
+for _ in range(int(input())):
+    n = int(input())
+    a = int(input())
+    s = (((10 ** n)*2)+a)
+    print(s)
+    b = int(input())
+    c = (((10 ** n)-1)-b)+1
+    print(c)
+    d = int(input())
+    e = (((10 ** n)-1)-d)+1
+    print(e)
+    ans = int(input())
+    if ans == 1:
+        pass
+    else:
+        exit(1)
+############################################
+# https://www.codechef.com/JAN20B/problems/ANTHILL
+from itertools import permutations as perm
+n, m, a, r = map(int, input().split())
+k_lst = list(range(1, n+1))
+# print(k_lst)
+k = list(perm(k_lst, 2))
+print(k)
+############################################

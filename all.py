@@ -2116,7 +2116,7 @@ def filemod(x):
 
 print(filemod(curr_perm))
 ##########################################
-# Asterisks in python
+# Asterisks in python convert
 intlst = [1, 2, 3, 4, 5]
 strlst = ['a', 'b', 'c', 'd', 'e']
 mixlst = [1, 2, 3, 'a', 'b', 'c']
