@@ -633,3 +633,61 @@ k_lst = list(range(1, n+1))
 k = list(perm(k_lst, 2))
 print(k)
 ############################################
+# https://www.codechef.com/LTIME79B/problems/CHEALG
+for _ in range(int(input())):
+    o = ""
+    s = input()+"0"
+    c = 1
+    for i in range(len(s)-1):
+        if s[i] == s[i+1]:
+            c += 1
+        else:
+            o += s[i] + str(c)
+            c = 1
+    if len(s)-1 > len(o):
+        print("YES")
+    else:
+        print("NO")
+############################################
+# https://www.codechef.com/LTIME79B/problems/GUESSNUM
+from math import sqrt
+def div(m):
+    dv = []
+    for i in range(1, int(sqrt(m))+1):
+        if m % i == 0:
+            if m // i == i:
+                dv.append(i)
+            else:
+                dv.append(i)
+                dv.append(m//i)
+    return dv
+
+for _ in range(int(input())):
+    a, m = map(int, input().split())
+    dv = div(m)
+    out = []
+    for d in dv:
+        n = (m-d)/a
+        if d <= n and n % d == 0 and n % 1 == 0:
+            out.append(int(n))
+    out.sort()
+    print(len(out))
+    # out = list(str(j) for j in out)
+    # print(' '.join(out))
+    print(*out)
+############################################
+# https://www.codechef.com/problems/VILLINE
+n = int(input())
+m, c = map(int, input().split())
+a, b = [], []
+for _ in range(n):
+    x, y, p = map(int, input().split())
+    if y > (m*x)+c:
+        a.append(p)
+    elif y < (m*x)+c:
+        b.append(p)
+    else:
+        pass
+print(max(sum(a), sum(b)))
+############################################
+
