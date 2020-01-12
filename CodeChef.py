@@ -690,4 +690,59 @@ for _ in range(n):
         pass
 print(max(sum(a), sum(b)))
 ############################################
+# https://www.codechef.com/JAN20B/problems/ENGLISH WA
+for _ in range(int(input())):
+    l = []
+    out = 0
+    for word in range(int(input())):
+        l.append(input())
+    l.sort()
+    a, b = l[::2], l[1::2]
+    for i, j in zip(a, b):
+        p = 0
+        for k in range(min(len(i), len(j))):
+            if i[k] == j[k]:
+                p += 1
+            else:
+                break
+        s = 0
+        n = -1
+        for m in range(min(len(i), len(j))):
+            if i[n] == j[n]:
+                s += 1
+                n -= 1
+            else:
+                break
+        out += ((min(p, s))*(min(p, s)))
+    print(out)
+############################################
+# https://www.codechef.com/problems/FLOW005
+for _ in range(int(input())):
+    l = [100, 50, 10, 5, 2, 1]
+    n = int(input())
+    count = 0
+    while n > 0:
+        for i in l:
+            if n - i >= 0:
+                count += 1
+                n -= i
+                break
+    print(count)
+############################################
+# https://www.codechef.com/problems/SUMTRIAN
+for _ in range(int(input())):
+    n = int(input())
+    l = []
+    for i in range(n):
+        l1 = list(map(int, input().split()))
+        l.append(l1)
+    for j in range(n-1, 0, -1):
+        for k in range(j):
+            if l[j][k] > l[j][k+1]:
+                l[j-1][k] += l[j][k]
+            else:
+                l[j-1][k] += l[j][k+1]
+    print(l[0][0])
+############################################
 
+############################################
