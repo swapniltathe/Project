@@ -1,0 +1,7 @@
+---
+- name: Test play
+  hosts: localhost
+  connection: local
+  tasks:
+  - name: Test hello world
+    debug: msg="Hello world!"
