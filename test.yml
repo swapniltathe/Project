@@ -4,4 +4,4 @@
   connection: local
   tasks:
   - name: Test hello world
-    debug: msg="Hello world!"
+    debug: msg="Ks kay paavn br hai ka?"
