@@ -5,3 +5,5 @@
   tasks:
   - name: Test hello world
     debug: msg="Ks kay paavn br hai ka?"
+  - name: check extra vars
+    debug: var=naav
